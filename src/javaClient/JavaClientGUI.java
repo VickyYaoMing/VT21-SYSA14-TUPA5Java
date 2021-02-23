@@ -1,18 +1,17 @@
 package javaClient;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
-import javax.swing.JLabel;
-import javax.swing.JButton;
+import javax.swing.border.EmptyBorder;
 
 public class JavaClientGUI extends JFrame {
 
@@ -25,6 +24,82 @@ public class JavaClientGUI extends JFrame {
 	private JTextField textFieldAddress;
 	private JTextField textFieldPhoneNo;
 	private JTextField textFieldEmail;
+	private JLabel lblFeedBack;
+	private JRadioButton rdbtnAdd;
+	private JRadioButton rdbtnEdit;
+	private JComboBox<String> comboBoxOldEmpNo;
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	public JTextField getTextFieldEmpNo() {
+		return textFieldEmpNo;
+	}
+
+	public void setTextFieldEmpNo(JTextField textFieldEmpNo) {
+		this.textFieldEmpNo = textFieldEmpNo;
+	}
+
+	public JTextField getTextFieldFirstName() {
+		return textFieldFirstName;
+	}
+
+	public void setTextFieldFirstName(JTextField textFieldFirstName) {
+		this.textFieldFirstName = textFieldFirstName;
+	}
+
+	public JTextField getTextFieldLastName() {
+		return textFieldLastName;
+	}
+
+	public void setTextFieldLastName(JTextField textFieldLastName) {
+		this.textFieldLastName = textFieldLastName;
+	}
+
+	public JTextField getTextFieldJobTitle() {
+		return textFieldJobTitle;
+	}
+
+	public void setTextFieldJobTitle(JTextField textFieldJobTitle) {
+		this.textFieldJobTitle = textFieldJobTitle;
+	}
+
+	public JTextField getTextFieldAddress() {
+		return textFieldAddress;
+	}
+
+	public void setTextFieldAddress(JTextField textFieldAddress) {
+		this.textFieldAddress = textFieldAddress;
+	}
+
+	public JTextField getTextFieldPhoneNo() {
+		return textFieldPhoneNo;
+	}
+
+	public void setTextFieldPhoneNo(JTextField textFieldPhoneNo) {
+		this.textFieldPhoneNo = textFieldPhoneNo;
+	}
+
+	public JTextField getTextFieldEmail() {
+		return textFieldEmail;
+	}
+
+	public void setTextFieldEmail(JTextField textFieldEmail) {
+		this.textFieldEmail = textFieldEmail;
+	}
 
 	/**
 	 * Launch the application.
@@ -65,7 +140,7 @@ public class JavaClientGUI extends JFrame {
 		contentPane.add(textFieldEmpNo);
 		textFieldEmpNo.setColumns(10);
 		
-		JComboBox comboBoxOldEmpNo = new JComboBox();
+		JComboBox<String> comboBoxOldEmpNo = new JComboBox<String>();
 		comboBoxOldEmpNo.setBounds(157, 31, 124, 27);
 		contentPane.add(comboBoxOldEmpNo);
 		
@@ -143,7 +218,7 @@ public class JavaClientGUI extends JFrame {
 		btnNewButton.setBounds(157, 364, 124, 27);
 		contentPane.add(btnNewButton);
 		
-		JComboBox comboBoxDelete = new JComboBox();
+		JComboBox<String> comboBoxDelete = new JComboBox<String>();
 		comboBoxDelete.setBounds(157, 430, 124, 27);
 		contentPane.add(comboBoxDelete);
 		
@@ -154,5 +229,41 @@ public class JavaClientGUI extends JFrame {
 		JLabel lblNewLabel = new JLabel("Delete Employee");
 		lblNewLabel.setBounds(44, 436, 103, 14);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblFeedBack = new JLabel("");
+		lblFeedBack.setBounds(10, 505, 49, 14);
+		contentPane.add(lblFeedBack);
+	}
+
+	public JLabel getLblFeedBack() {
+		return lblFeedBack;
+	}
+
+	public void setLblFeedBack(JLabel lblFeedBack) {
+		this.lblFeedBack = lblFeedBack;
+	}
+
+	public JRadioButton getRdbtnAdd() {
+		return rdbtnAdd;
+	}
+
+	public void setRdbtnAdd(JRadioButton rdbtnAdd) {
+		this.rdbtnAdd = rdbtnAdd;
+	}
+
+	public JRadioButton getRdbtnEdit() {
+		return rdbtnEdit;
+	}
+
+	public void setRdbtnEdit(JRadioButton rdbtnEdit) {
+		this.rdbtnEdit = rdbtnEdit;
+	}
+
+	public JComboBox<String> getComboBoxOldEmpNo() {
+		return comboBoxOldEmpNo;
+	}
+
+	public void setComboBoxOldEmpNo(JComboBox<String> comboBoxOldEmpNo) {
+		this.comboBoxOldEmpNo = comboBoxOldEmpNo;
 	}
 }
