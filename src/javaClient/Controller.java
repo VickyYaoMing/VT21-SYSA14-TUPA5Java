@@ -10,13 +10,14 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import org.tempuri.CRONUS_Sverige_AB_Employee;
+import org.tempuri.WebServiceTUPA5Soap;
 import org.tempuri.WebServiceTUPA5SoapProxy;
 
 
 public class Controller {
 
 	private JavaClientGUI gui;
-	private WebServiceTUPA5SoapProxy proxy; 
+	private WebServiceTUPA5Soap proxy; 
 
 	public Controller(JavaClientGUI gui) {
 		this.gui = gui;
@@ -33,11 +34,11 @@ public class Controller {
 		this.gui = gui;
 	}
 
-	public WebServiceTUPA5SoapProxy getProxy() {
+	public WebServiceTUPA5Soap getProxy() {
 		return proxy;
 	}
 
-	public void setProxy(WebServiceTUPA5SoapProxy proxy) {
+	public void setProxy(WebServiceTUPA5Soap proxy) {
 		this.proxy = proxy;
 	}
 	
