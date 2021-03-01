@@ -50,8 +50,7 @@ public class Controller {
 		try {
 			this.updateEmployeeTable();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			gui.getLblFeedBack().setText("Please check your connection and try again.");
 		} 
 		
 	}
@@ -85,26 +84,50 @@ public class Controller {
 				String address = gui.getTextFieldAddress().getText();
 				String phone_No_ = gui.getTextFieldPhoneNumber().getText();
 				String e_Mail = gui.getTextFieldEmail().getText();
+				String no_ = gui.getTextFieldEmpNo().getText();
 				try {
-					if(gui.getRdbtnAdd().isSelected()) {
-						String no_ = gui.getTextFieldEmpNo().getText();
-						
-					proxy.addEmployee(no_, first_Name, last_Name, job_Title, address, phone_No_, e_Mail);
-					gui.getLblFeedBack().setText("Employee was created successfully");
-					
-				} else  {
 					String empNo = gui.getComboBoxOldEmpNo().getSelectedItem().toString();
+				
+					if(gui.getRdbtnAdd().isSelected() & gui.getTextFieldEmpNo().getText().equals("")) {
+						gui.getLblFeedBack().setText("Please insert your employee number.");
+					
+					} else if(gui.getTextFieldFirstName().getText().equals("")) {
+						gui.getLblFeedBack().setText("Please insert your name.");
+					
+					} else if(gui.getTextFieldLastName().getText().equals("")) {
+						gui.getLblFeedBack().setText("Please insert your last name.");
+					
+					} else if(gui.getTextFieldJobTitle().getText().equals("")) {
+						gui.getLblFeedBack().setText("Please insert your job title.");
+					
+					} else if(gui.getTextFieldAddress().getText().equals("")) {
+						gui.getLblFeedBack().setText("Please insert your address.");
+				
+					} else if(gui.getTextFieldPhoneNumber().getText().equals("")) {
+						gui.getLblFeedBack().setText("Please insert your phone number.");
+				
+					} else if(gui.getTextFieldEmail().getText().equals("")) {
+						gui.getLblFeedBack().setText("Please insert your email.");
+				
+					} else if(gui.getRdbtnAdd().isSelected()) {
+						proxy.addEmployee(no_, first_Name, last_Name, job_Title, address, phone_No_, e_Mail);
+						gui.getLblFeedBack().setText("Employee was created successfully");
+					
+					} else  {
+					
 					proxy.updateEmployee(empNo, first_Name, last_Name, job_Title, address, phone_No_, e_Mail);
 					gui.getLblFeedBack().setText("Employee was edited successfully");
 				}
+					
 					fillComboboxes();
 					updateEmployeeTable();
-				} catch (RemoteException e1) {
-					gui.getLblFeedBack().setText("Error");
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				
-			}
+				} catch (RemoteException e1) {
+					gui.getLblFeedBack().setText("Please check your connection and try again.");
+				
+				} catch (NullPointerException n) {
+					gui.getLblFeedBack().setText("No Employees left to edit. Please add one.");
+				}
 			}
 		};
 	}
@@ -122,8 +145,7 @@ public class Controller {
 			gui.getComboBoxDelete().setModel(defaultBox);
 			
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			gui.getLblFeedBack().setText("Please check your connection and try again.");
 		}
 		
 	}
@@ -139,11 +161,12 @@ public class Controller {
 					gui.getLblFeedBack().setText("Employee was deleted successfully");
 					fillComboboxes();
 					updateEmployeeTable();
-				} catch (RemoteException e1) {
-					gui.getLblFeedBack().setText("Error");
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				
+				} catch (RemoteException e1) {
+					gui.getLblFeedBack().setText("Please check your connection and try again.");
+			
+				} catch (NullPointerException n) {
+				gui.getLblFeedBack().setText("No Employees left to delete. Please add one.");
 			}
 			}
 		};
