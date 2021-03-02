@@ -162,6 +162,7 @@ public class Controller {
 		String almostCleanErrorText = fullErrorText.split(":")[1];
 		return almostCleanErrorText.split("-")[0].trim();
 	}
+	
 	public void handleRemoteException(RemoteException e) {
 		Throwable innerException = e.getCause();
 		if (innerException != null && innerException instanceof ConnectException) {
