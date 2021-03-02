@@ -224,7 +224,7 @@ public class JavaClientGUI extends JFrame {
 		contentPane_1.add(lblNewLabel);
 		
 		lblFeedBack = new JLabel("");
-		lblFeedBack.setBounds(10, 402, 271, 14);
+		lblFeedBack.setBounds(10, 530, 547, 14);
 		contentPane_1.add(lblFeedBack);
 	}
 }
