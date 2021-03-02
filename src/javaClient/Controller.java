@@ -47,15 +47,15 @@ public class Controller {
 		gui.getBtnSave().addActionListener(this.saveEmployee());
 		gui.getBtnDelete().addActionListener(this.deleteEmployee());
 		this.fillComboboxes();
-		this.buttonListen();
+		this.rdbtnListen();
 		try {
 			this.updateEmployeeTable();
 		} catch (RemoteException e) {
-			gui.getLblFeedBack().setText("Please check your connection and try again.");
+			gui.getLblFeedBack().setText(cleanErrorText(e.getMessage()));
 		} 
 		
 	}
-	public void buttonListen() {
+	public void rdbtnListen() {
 		gui.getRdbtnAdd().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(gui.getRdbtnAdd().isSelected()) {
@@ -124,7 +124,7 @@ public class Controller {
 					updateEmployeeTable();
 				
 				} catch (RemoteException e1) {
-					gui.getLblFeedBack().setText("Please check your connection and try again.");
+					gui.getLblFeedBack().setText(cleanErrorText(e1.getMessage()));
 				
 				} catch (NullPointerException n) {
 					gui.getLblFeedBack().setText("No Employees left to edit. Please add one.");
@@ -140,13 +140,13 @@ public class Controller {
 			for(int i = 0; i < employees.length; i++) {
 				ls[i] = employees[i].getNo_();
 			}
-			DefaultComboBoxModel<String> defaultBox = new DefaultComboBoxModel<String>(ls);
+			DefaultComboBoxModel<String> defaultModel = new DefaultComboBoxModel<String>(ls);
 			
-			gui.getComboBoxOldEmpNo().setModel(defaultBox);
-			gui.getComboBoxDelete().setModel(defaultBox);
+			gui.getComboBoxOldEmpNo().setModel(defaultModel);
+			gui.getComboBoxDelete().setModel(defaultModel);
 			
 		} catch (RemoteException e) {
-			gui.getLblFeedBack().setText("Please check your connection and try again.");
+			gui.getLblFeedBack().setText(cleanErrorText(e.getMessage()));
 		}
 		
 	}
@@ -164,7 +164,7 @@ public class Controller {
 					updateEmployeeTable();
 				
 				} catch (RemoteException e1) {
-					gui.getLblFeedBack().setText("Please check your connection and try again.");
+					gui.getLblFeedBack().setText(cleanErrorText(e1.getMessage()));
 			
 				} catch (NullPointerException n) {
 				gui.getLblFeedBack().setText("No Employees left to delete. Please add one.");
@@ -180,7 +180,11 @@ public class Controller {
 		EmployeeTableModel dataModel = new EmployeeTableModel(employeeList);
 		gui.getTableEmp().setModel(dataModel);
 	}
-	
+
+	public String cleanErrorText(String fullErrorText) {
+		String almostCleanErrorText = fullErrorText.split(":")[1];
+		return almostCleanErrorText.split("-")[0].trim();
+	}
 
 
 }

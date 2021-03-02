@@ -7,7 +7,7 @@ import org.tempuri.CRONUS_Sverige_AB_Employee;
 
 public class EmployeeTableModel extends AbstractTableModel {
 		/**
-		 * 
+		 *  Thanks to Jonas, https://stackoverflow.com/questions/2937991/create-tablemodel-and-populate-jtable-dynamically
 		 */
 		private static final long serialVersionUID = 1L;
 		private List<CRONUS_Sverige_AB_Employee> items;
